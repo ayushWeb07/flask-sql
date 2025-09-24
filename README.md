@@ -71,12 +71,6 @@ python run.py
 
 ## 📸 Screenshots
 
-<p float="left">
-  <img src="/assets/login.png" width="150" />
-  <img src="/assets/login.png" width="150" />
-  <img src="/assets/login.png" width="150" />
-</p>
-
 ![Login](/assets/login.png)
 ![Home](/assets/home.png)
 ![Categories](/assets/categories.png)
