@@ -14,7 +14,9 @@ Users can register, log in, and post/edit tweets.
 
 ---
 
-## 📂 Project Structure
+## 📂 Project 
+
+```bash
 twitter/
 │── app/
 │ ├── routes/ # Flask blueprints (auth & tweets)
@@ -36,17 +38,24 @@ twitter/
 ```bash
 git clone https://github.com/ayushWeb07/flask-sql.git
 cd flask-sql
+```
 
 ### 2. Create virtual environment
+```bash
 python -m venv venv
 source venv/bin/activate   # On Mac/Linux
 venv\Scripts\activate      # On Windows
+```
 
 ### 3. Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
 ### 4. Rum the app
+```bash
 python run.py
+```
 
 ---
 
