@@ -27,8 +27,7 @@ twitter/
 │── instance/ # Local DB (ignored by git)
 │── run.py # Entry point
 
----
-
+```
 
 ---
 
