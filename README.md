@@ -71,7 +71,7 @@ python run.py
 
 ## 📸 Screenshots
 
-![Login](/assets/about.png)
+![Login](/assets/login.png)
 ![Home](/assets/home.png)
 ![Categories](/assets/categories.png)
 ![About](/assets/about.png)
