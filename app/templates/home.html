@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <div class="home">
+
+
+        <div class="home_create_tweet">
+            <form action="{{url_for('tweets.add_tweet')}}" method="POST">
+                <textarea name="content" placeholder="Write anything"></textarea>
+    
+    
+                <select name="category_id">
+                    <option value="placeholder" autofocus="" disabled>Choose a category</option>
+
+                    {% for category in categories %}
+
+                    <option value="{{category.id}}">{{category.name}}</option>
+
+                    {% endfor %}
+                </select>
+
+
+                <input type="submit" value="Tweet">
+            </form>
+        </div>
+
+        <div class="home_tweets">
+
+            {% if tweets %}
+
+            {% for tweet in tweets %}
+
+            <div class="home_tweets-tweet">
+                <div class="home_tweets-tweet-info">
+                    <span>{{tweet.username}} <p>{{tweet.created_at.strftime('%Y-%m-%d %H:%M:%S')}}</p></span>
+
+                    <div class="home_tweets-tweet-info-icons">
+
+                        <span>{{tweet.likes}} likes</span>
+                        
+                        <form action="{{ url_for('tweets.update_tweet', tweet_id=tweet.id) }}"  method= "post">
+                            
+                            <input type="text" name="likes" value="{{tweet.likes + 1}}" hidden>
+                            
+                            <input type="submit" value="Like"></input>
+                        </form>
+
+                        {% if tweet.user_id == session["id"] or session["is_admin"] %}
+
+                        
+                       
+                       
+                        <form action="{{ url_for('tweets.update_tweet', tweet_id=tweet.id) }}"  method= "get">
+                            <input type="submit" value="Edit"></input>
+                        </form>
+
+                        <form action="{{ url_for('tweets.delete_tweet', tweet_id=tweet.id) }}"  method= "post" class="home_tweets-tweet-info-icons-delete">                            
+                            <input type="submit" value="Delete"></input>
+                        </form>
+
+                        {% endif %}
+                    </div>
+                </div>
+
+                <p>{{tweet.content}}</p>
+            </div>
+
+            {% endfor %}
+
+
+            {% else %}
+            <p>No tweets to show</p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+{% endblock %}

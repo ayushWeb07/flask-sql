@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}eCommerce Website{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{{url_for('static', filename= 'styles.css')}}">
+    <script src="{{url_for('static', filename= 'scripts.js')}}"></script>
+
+</head>
+<body>
+
+    <header>
+        <a class="logo" href="{{url_for('tweets.get_all_tweets')}}">Twitter</a>
+
+        {% if "username" in session %}
+        <nav>
+            <a href="{{url_for('tweets.get_all_tweets')}}">Home</a>
+
+            <a href="{{url_for('tweets.get_all_categories')}}">Categories</a>
+
+            <a href="{{url_for('tweets.show_about')}}">About</a>
+            
+        </nav>
+
+        <div class="header_tabs">
+            <span>@{{session["username"]}}</span>
+            <a class="logout" href="{{url_for('auth.logout')}}">Logout</a>
+        </div>
+
+
+        {% else %}
+        <p class="header_error" >You must be logged in before accessing the site!</p>
+        {% endif %}
+
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Child templates will insert content here -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>Tweeter © 2025 | All Rights Reserved</p>
+    </footer>
+
+    
+</body>
+</html>

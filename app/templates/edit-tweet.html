@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Tweet{% endblock %}
+
+{% block content %}
+    <div class="edit_tweet">
+        <h1>Edit tweet</h1>
+
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
+
+        
+
+        <form action="{{ url_for('tweets.update_tweet', tweet_id=tweet.id) }}" method="post">
+
+            <textarea name="content" placeholder="Enter content">{{ tweet.content }}</textarea>
+
+            <input type="submit" value="Update tweet">
+        </form>
+
+
+    </div>
+{% endblock %}
